@@ -22,3 +22,5 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+/vite.config.js
+/vite.config.d.ts
