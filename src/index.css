@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #1b1512;
+  background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(201, 166, 107, 0.12),
+      transparent
+    ),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(107, 122, 79, 0.06), transparent);
+  background-attachment: fixed;
+  color: #ede6da;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Visible keyboard focus ring everywhere */
+:focus-visible {
+  outline: 2px solid #c9a66b;
+  outline-offset: 2px;
+}

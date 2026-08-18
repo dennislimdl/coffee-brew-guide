@@ -1,0 +1,29 @@
+{
+  "id": "aeropress-standard",
+  "name": "AeroPress (Standard Method)",
+  "coffeeType": "immersion",
+  "roastRecommendation": "medium",
+  "summary": "Fast, portable, and clean — a hybrid of immersion and pressure filtration.",
+  "totalTimeSeconds": 150,
+  "servings": 1,
+  "difficulty": "easy",
+  "equipment": [
+    { "equipmentId": "aeropress" },
+    { "equipmentId": "paper-filter-aeropress" },
+    { "equipmentId": "digital-scale" },
+    { "equipmentId": "stirring-paddle" },
+    { "equipmentId": "kettle" }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, medium grind", "amount": "17g" },
+    { "id": "i2", "name": "Water, 85°C / 185°F", "amount": "250ml" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Set up", "instruction": "Rinse the paper filter in the cap, attach it, and set the AeroPress upright on your mug.", "durationSeconds": 15 },
+    { "id": "s2", "title": "Add coffee", "instruction": "Add 17g of medium-ground coffee into the chamber.", "durationSeconds": 15 },
+    { "id": "s3", "title": "Pour and stir", "instruction": "Pour in 250ml of water, then stir gently for about 10 seconds to saturate evenly.", "durationSeconds": 20, "glossaryRefs": ["agitation"] },
+    { "id": "s4", "title": "Steep", "instruction": "Insert the plunger slightly to seal without pressing, and let the coffee steep.", "durationSeconds": 90, "glossaryRefs": ["immersion-brewing"] },
+    { "id": "s5", "title": "Press", "instruction": "Press down slowly and steadily until you hear a hiss, which signals you're done.", "durationSeconds": 20, "tip": "Press gently — forcing it can push grit through the filter." }
+  ],
+  "source": { "label": "Standard upright AeroPress method", "type": "original" }
+}

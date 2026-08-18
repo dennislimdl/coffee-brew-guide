@@ -1,0 +1,22 @@
+{
+  "name": "Brew Guide — Coffee Recipes",
+  "short_name": "Brew Guide",
+  "description": "Step-by-step coffee brewing recipes with timers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B1512",
+  "theme_color": "#1B1512",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

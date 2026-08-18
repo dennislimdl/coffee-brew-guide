@@ -1,0 +1,58 @@
+[
+  {
+    "id": "growing",
+    "order": 1,
+    "title": "Growing",
+    "summary": "A coffee tree takes 3–4 years before it flowers, and its cherries ripen roughly 8 months after that.",
+    "description": "Coffee grows on evergreen shrubs, mostly Coffea arabica and Coffea robusta, planted in the tropics between the Tropics of Cancer and Capricorn — the so-called \"bean belt.\" A tree needs several years of growth before its first useful harvest. Once it flowers, each bud becomes a cherry that turns from green to bright red as it ripens over the following months. Altitude, shade, soil, and climate all shape the sugars and acids that develop in the seed, which is why the same variety grown on two different farms can taste completely different."
+  },
+  {
+    "id": "harvesting",
+    "order": 2,
+    "title": "Harvesting",
+    "summary": "Cherries are picked either by hand, one ripe cherry at a time, or stripped from the branch all at once.",
+    "description": "Because cherries on the same branch don't all ripen together, quality-focused farms use selective picking: workers pass through the same trees every 8–10 days, hand-picking only the cherries that are fully red and ripe. The alternative, strip picking, pulls every cherry off a branch regardless of ripeness — faster and often mechanized, but it mixes under- and over-ripe fruit in with the good stuff. Nearly all of the highest-quality specialty coffee is selectively hand-picked."
+  },
+  {
+    "id": "processing",
+    "order": 3,
+    "title": "Processing",
+    "summary": "The fruit has to come off the seed — how and when it comes off is one of the biggest flavor decisions in coffee.",
+    "description": "A coffee cherry is fruit wrapped around two seeds (the \"beans\"), and processing is how that fruit gets removed. Washed (wet) processing strips the skin and pulp mechanically, then ferments away the sticky mucilage layer before washing and drying — producing a cleaner, brighter cup. Natural (dry) processing skips pulping entirely: whole cherries dry in the sun for weeks, letting the fruit's sugars soak into the seed, which gives bigger, fruitier, winier flavors. Honey processing sits in between — the skin comes off, but some or all of the sugary mucilage is left on during drying. The more fruit contact during this stage, the sweeter and more fruit-forward the coffee tends to taste."
+  },
+  {
+    "id": "drying",
+    "order": 4,
+    "title": "Drying",
+    "summary": "Beans dry down to about 10–12% moisture before they're stable enough to store or ship.",
+    "description": "Whether washed, honey, or natural, the beans (still wrapped in a papery layer called parchment, or in natural process still inside the dried fruit) are spread out on raised beds or patios and dried — traditionally in the sun, sometimes finished mechanically. This can take anywhere from a few days for washed coffee to several weeks for naturals, and it has to be managed carefully: dry too fast and the coffee tastes underdeveloped, too slow and it risks mold or over-fermentation."
+  },
+  {
+    "id": "milling",
+    "order": 5,
+    "title": "Milling & sorting",
+    "summary": "Dry mills hull off the last layers of skin, then sort beans by size, density, and color.",
+    "description": "Dried coffee arrives at a dry mill still wrapped in parchment (or, for naturals, dried fruit skin). Hulling machines strip that off to reveal the raw green bean underneath. From there, beans are graded and sorted — by screen size, by density (heavier beans are usually denser and higher quality), and finally by color, pulling out any beans that are underripe, insect-damaged, or discolored. This sorting stage is one of the most labor-intensive parts of getting coffee ready for export, and it directly determines the grade and price a lot of coffee can command."
+  },
+  {
+    "id": "roasting",
+    "order": 6,
+    "title": "Roasting",
+    "summary": "Roasting turns green, grassy-smelling seeds into the aromatic brown beans that actually taste like coffee.",
+    "description": "Green coffee is shipped around the world in bags and roasted close to where it will be sold, since roasted coffee loses freshness fast. A roaster heats the beans to somewhere around 200°C (390°F), driving off moisture and triggering the Maillard reaction and caramelization that build coffee's characteristic aroma and flavor compounds. \"First crack,\" an audible popping sound, marks the start of drinkable coffee; roasters then choose how much further to push it — light, medium, or dark — trading origin character for roasted, roastier flavors the darker they go."
+  },
+  {
+    "id": "grinding",
+    "order": 7,
+    "title": "Grinding",
+    "summary": "Grind size controls how fast water can pull flavor out of the coffee — it has to match the brew method.",
+    "description": "Grinding breaks roasted beans into particles small enough for water to extract their flavor, but the right size depends entirely on how long the water and coffee will be in contact. A slow method like cold brew, which steeps for hours, needs a coarse grind so it doesn't over-extract; a fast method like espresso, which pushes water through in under 30 seconds, needs a fine grind so it has enough surface area to extract in time. Grinding right before brewing matters too — ground coffee loses aroma within minutes as it oxidizes."
+  },
+  {
+    "id": "brewing",
+    "order": 8,
+    "title": "Brewing",
+    "summary": "Hot (or cold) water dissolves the soluble flavor compounds out of the grounds — the last step, and the one this app's brew guide walks you through.",
+    "description": "Brewing is simply controlled extraction: water pulls soluble acids, sugars, and aromatic compounds out of ground coffee, and everything upstream — variety, processing, roast, grind — determines what's available to extract. Variables like water temperature, brew time, and the ratio of coffee to water change how much of that gets pulled out and how it's balanced. This is where the recipes in the Step-by-Step Brewing Guide pick up: matched equipment, timing, and technique for a specific method."
+  }
+]

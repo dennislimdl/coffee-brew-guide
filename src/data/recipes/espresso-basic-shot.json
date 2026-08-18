@@ -1,0 +1,29 @@
+{
+  "id": "espresso-basic-shot",
+  "name": "Espresso (Basic Shot)",
+  "coffeeType": "espresso-based",
+  "roastRecommendation": "dark",
+  "summary": "A concentrated shot pulled under pressure — the base for lattes, cappuccinos, and americanos.",
+  "totalTimeSeconds": 120,
+  "servings": 1,
+  "difficulty": "advanced",
+  "equipment": [
+    { "equipmentId": "espresso-machine" },
+    { "equipmentId": "espresso-grinder" },
+    { "equipmentId": "tamper" },
+    { "equipmentId": "digital-scale" },
+    { "equipmentId": "portafilter" }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, fine espresso grind", "amount": "18g" },
+    { "id": "i2", "name": "Water (brewed through machine)", "amount": "36g yield" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Dose", "instruction": "Grind 18g of coffee directly into the portafilter basket.", "durationSeconds": 20, "glossaryRefs": ["grind-size"] },
+    { "id": "s2", "title": "Distribute and tamp", "instruction": "Distribute the grounds evenly, then tamp firmly and level with consistent, even pressure.", "durationSeconds": 20, "tip": "An uneven tamp causes water to channel and creates a sour, uneven shot.", "glossaryRefs": ["channeling"] },
+    { "id": "s3", "title": "Lock in and start", "instruction": "Lock the portafilter into the group head and start the shot immediately.", "durationSeconds": 10 },
+    { "id": "s4", "title": "Pull the shot", "instruction": "Extract until the scale reads about 36g of liquid in the cup.", "durationSeconds": 28, "tip": "Aim for roughly 25–30 seconds; adjust grind finer if it runs too fast, coarser if too slow.", "glossaryRefs": ["brew-ratio", "extraction"] },
+    { "id": "s5", "title": "Serve", "instruction": "Stop the shot, remove the cup, and serve immediately while crema is fresh.", "durationSeconds": 10, "glossaryRefs": ["crema"] }
+  ],
+  "source": { "label": "Standard 1:2 ratio espresso method", "type": "original" }
+}

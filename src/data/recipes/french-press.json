@@ -1,0 +1,30 @@
+{
+  "id": "french-press",
+  "name": "French Press",
+  "coffeeType": "immersion",
+  "roastRecommendation": "medium",
+  "summary": "Full-bodied, textured coffee brewed by full immersion — forgiving and low-equipment.",
+  "totalTimeSeconds": 300,
+  "servings": 2,
+  "difficulty": "easy",
+  "equipment": [
+    { "equipmentId": "french-press" },
+    { "equipmentId": "digital-scale" },
+    { "equipmentId": "stirring-spoon" },
+    { "equipmentId": "kettle" },
+    { "equipmentId": "burr-grinder" }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, coarse grind", "amount": "30g" },
+    { "id": "i2", "name": "Water, 94°C / 200°F", "amount": "500ml" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Preheat", "instruction": "Rinse the French press with hot water to preheat the glass, then discard the water.", "durationSeconds": 15 },
+    { "id": "s2", "title": "Add coffee", "instruction": "Add 30g of coarsely ground coffee to the empty press.", "durationSeconds": 15, "glossaryRefs": ["grind-size"] },
+    { "id": "s3", "title": "Pour and bloom", "instruction": "Pour in 500ml of hot water, saturating all the grounds evenly.", "durationSeconds": 15, "tip": "A crust of grounds will form on top — that's expected.", "glossaryRefs": ["immersion-brewing"] },
+    { "id": "s4", "title": "Steep", "instruction": "Place the lid on top without plunging. Let the coffee steep undisturbed.", "durationSeconds": 240 },
+    { "id": "s5", "title": "Break the crust", "instruction": "Gently stir the surface to break up the crust of grounds, then skim off any foam.", "durationSeconds": 15, "glossaryRefs": ["agitation"] },
+    { "id": "s6", "title": "Plunge and serve", "instruction": "Slowly press the plunger straight down, then pour immediately to stop extraction.", "durationSeconds": 20, "tip": "Don't let brewed coffee sit on the grounds — pour it all out right away.", "glossaryRefs": ["extraction"] }
+  ],
+  "source": { "label": "Standard full-immersion French press method", "type": "original" }
+}

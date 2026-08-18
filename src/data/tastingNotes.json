@@ -1,0 +1,8 @@
+[
+  { "id": "fruity", "name": "Fruity", "description": "Bright, often fruit-forward notes — common in washed, high-grown coffees and lighter roasts.", "examples": ["blueberry", "cherry", "citrus", "green apple", "dried apricot"] },
+  { "id": "floral", "name": "Floral", "description": "Delicate aromatic notes reminiscent of flowers, most noticeable while the coffee is still hot and by smell.", "examples": ["jasmine", "rose", "hibiscus", "orange blossom"] },
+  { "id": "sweet", "name": "Sweet", "description": "Notes that read as sugary rather than fruity, usually the first thing you notice on the front of the tongue.", "examples": ["honey", "caramel", "brown sugar", "vanilla", "maple"] },
+  { "id": "nutty-cocoa", "name": "Nutty & Cocoa", "description": "Warm, rounded notes common in medium roasts and many Central and South American coffees.", "examples": ["almond", "hazelnut", "peanut", "dark chocolate", "cocoa"] },
+  { "id": "spice", "name": "Spice", "description": "Warm background notes that show up more as a coffee cools, often paired with fuller-bodied or darker-roasted coffees.", "examples": ["cinnamon", "clove", "black pepper", "nutmeg"] },
+  { "id": "earthy-roasted", "name": "Earthy & Roasted", "description": "Deeper, heavier notes that become more prominent the darker a coffee is roasted.", "examples": ["tobacco", "leather", "toast", "smoke", "molasses"] }
+]

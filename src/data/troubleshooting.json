@@ -1,0 +1,42 @@
+[
+  {
+    "coffeeType": "pour-over",
+    "issues": [
+      { "id": "po-sour", "symptom": "Tastes sour or thin", "likelyCause": "Under-extraction — usually grind too coarse, water not hot enough, or drawdown finished too fast.", "fix": "Grind finer, and check your water is close to 96°C/205°F. Aim for a total drawdown time in the 2:30–3:30 range." },
+      { "id": "po-bitter", "symptom": "Tastes bitter or harsh", "likelyCause": "Over-extraction — grind too fine, water too hot, or drawdown taking too long.", "fix": "Grind slightly coarser. If drawdown is well past 3:30, that's your main signal." },
+      { "id": "po-uneven", "symptom": "Water pools or drains unevenly", "likelyCause": "Channeling — pouring too fast, too close to the filter wall, or an unlevel bed.", "fix": "Pour in slow, steady spirals starting from the center, and keep pours away from the very edge of the filter." }
+    ]
+  },
+  {
+    "coffeeType": "immersion",
+    "issues": [
+      { "id": "im-weak", "symptom": "Tastes weak or watery", "likelyCause": "Not enough coffee relative to water, or steep time too short.", "fix": "Check your ratio against the recipe (French press ~1:16, AeroPress ~1:15) and don't cut the steep time short." },
+      { "id": "im-gritty", "symptom": "Gritty or sludgy in the cup", "likelyCause": "Grind too fine for the mesh filter, or plunged/pressed too aggressively.", "fix": "Grind coarser for French press specifically — a mesh filter can't catch fine particles the way paper can. Press or plunge slowly." },
+      { "id": "im-bitter", "symptom": "Tastes bitter", "likelyCause": "Over-steeped, or coffee left sitting on the grounds after brewing.", "fix": "Pour out all the coffee immediately after plunging/pressing — don't let it continue steeping in the brewer." }
+    ]
+  },
+  {
+    "coffeeType": "espresso-based",
+    "issues": [
+      { "id": "es-sour", "symptom": "Shot is sour or watery, runs too fast", "likelyCause": "Grind too coarse, or dose too low for the basket.", "fix": "Grind finer in small increments and re-test — espresso is very sensitive to grind size. Confirm your dose matches the basket size." },
+      { "id": "es-bitter", "symptom": "Shot is bitter, burnt, or runs too slow", "likelyCause": "Grind too fine, or tamped unevenly causing excess resistance in spots.", "fix": "Grind slightly coarser. Check your tamp is level — an uneven tamp causes channeling even in espresso." },
+      { "id": "es-no-crema", "symptom": "Little or no crema", "likelyCause": "Stale beans (crema fades fast after roasting) or water not reaching full pressure/temperature.", "fix": "Use beans within a few weeks of roast date, and confirm your machine is fully heated before pulling." }
+    ]
+  },
+  {
+    "coffeeType": "moka",
+    "issues": [
+      { "id": "mk-burnt", "symptom": "Tastes burnt or metallic", "likelyCause": "Left on heat too long after brewing finished, or heat was too high.", "fix": "Use medium-low heat and remove from heat the moment you hear the sputtering hiss at the end." },
+      { "id": "mk-weak", "symptom": "Tastes weak or watery", "likelyCause": "Grind too coarse, or basket underfilled.", "fix": "Grind a bit finer (finer than drip, coarser than espresso) and fill the basket level without packing it down." },
+      { "id": "mk-not-brewing", "symptom": "Little or no coffee comes through", "likelyCause": "Grind too fine and choking flow, or the pot not sealed tightly.", "fix": "Check the rubber gasket is seated properly and the pot is screwed on firmly; grind slightly coarser if it's still not flowing." }
+    ]
+  },
+  {
+    "coffeeType": "cold",
+    "issues": [
+      { "id": "cb-weak", "symptom": "Concentrate tastes weak even before diluting", "likelyCause": "Ratio too diluted for a concentrate, or steep time too short.", "fix": "Cold brew needs a much lower ratio than hot methods — aim close to 1:7. Don't steep less than 12 hours." },
+      { "id": "cb-flat", "symptom": "Tastes flat or underdeveloped", "likelyCause": "Grind too coarse for the steep time, limiting extraction even over many hours.", "fix": "Grind slightly finer — cold extraction is much slower than hot, so cold brew tolerates and often benefits from a finer grind than French press." },
+      { "id": "cb-gritty", "symptom": "Gritty sediment in the final drink", "likelyCause": "Single-pass straining only through a mesh strainer.", "fix": "Strain twice — mesh strainer first to remove the bulk of grounds, then a paper filter for the fine sediment." }
+    ]
+  }
+]

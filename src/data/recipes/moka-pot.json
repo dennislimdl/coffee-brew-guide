@@ -1,0 +1,28 @@
+{
+  "id": "moka-pot",
+  "name": "Moka Pot",
+  "coffeeType": "moka",
+  "roastRecommendation": "dark",
+  "summary": "Stovetop brewer that produces strong, concentrated coffee close to espresso in character.",
+  "totalTimeSeconds": 360,
+  "servings": 2,
+  "difficulty": "medium",
+  "equipment": [
+    { "equipmentId": "moka-pot" },
+    { "equipmentId": "stove" },
+    { "equipmentId": "kettle", "optional": true }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, fine grind (not espresso-fine)", "amount": "18g" },
+    { "id": "i2", "name": "Water, hot, just off boil", "amount": "300ml" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Fill the base", "instruction": "Fill the bottom chamber with hot water up to just below the pressure release valve.", "durationSeconds": 30, "tip": "Starting with hot water reduces time on heat and prevents a metallic taste." },
+    { "id": "s2", "title": "Fill the basket", "instruction": "Fill the funnel basket with coffee and level it off without tamping.", "durationSeconds": 30, "glossaryRefs": ["grind-size"] },
+    { "id": "s3", "title": "Assemble", "instruction": "Insert the basket, screw the top chamber on firmly, and place the pot on medium-low heat with the lid open.", "durationSeconds": 30 },
+    { "id": "s4", "title": "Brew", "instruction": "Listen and watch for coffee to begin flowing into the top chamber.", "durationSeconds": 240, "tip": "A steady, hissing gurgle means you're near the end — that's when it starts pulling steam, not coffee." },
+    { "id": "s5", "title": "Remove from heat", "instruction": "As soon as you hear a sputtering hiss, remove from heat immediately to avoid a burnt, bitter taste.", "durationSeconds": 15, "glossaryRefs": ["extraction"] },
+    { "id": "s6", "title": "Cool the base and serve", "instruction": "Run the base briefly under cool water to stop extraction, then pour and serve.", "durationSeconds": 15 }
+  ],
+  "source": { "label": "Standard stovetop moka pot method", "type": "original" }
+}

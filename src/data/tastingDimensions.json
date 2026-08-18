@@ -1,0 +1,7 @@
+[
+  { "id": "acidity", "name": "Acidity", "description": "The bright, tangy sensation on the sides of your tongue — not sourness from a flaw, but a lively quality often compared to citrus or apple. Lighter roasts and washed coffees tend to have more of it." },
+  { "id": "body", "name": "Body", "description": "How heavy or light the coffee feels in your mouth, from tea-like and thin to syrupy and thick. Brew method affects this a lot — French press and espresso tend toward fuller body than pour-over." },
+  { "id": "sweetness", "name": "Sweetness", "description": "A perceived sugariness that comes from how well the coffee was grown, processed, and roasted — not added sugar. Described with references like honey, caramel, or brown sugar." },
+  { "id": "aftertaste", "name": "Aftertaste (finish)", "description": "What lingers on your palate after swallowing. A short finish fades quickly; a long finish continues to evolve for a while after each sip." },
+  { "id": "balance", "name": "Balance", "description": "How well acidity, sweetness, and body work together, with no single quality overpowering the others." }
+]

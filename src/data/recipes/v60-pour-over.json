@@ -1,0 +1,32 @@
+{
+  "id": "v60-pour-over",
+  "name": "V60 Pour Over",
+  "coffeeType": "pour-over",
+  "roastRecommendation": "light",
+  "summary": "A clean, bright cup made with a conical dripper and paper filter. Rewards precision on pour timing and water flow.",
+  "totalTimeSeconds": 210,
+  "servings": 1,
+  "difficulty": "medium",
+  "equipment": [
+    { "equipmentId": "v60-dripper" },
+    { "equipmentId": "paper-filter" },
+    { "equipmentId": "gooseneck-kettle" },
+    { "equipmentId": "digital-scale" },
+    { "equipmentId": "server" },
+    { "equipmentId": "burr-grinder" }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, medium-fine grind", "amount": "22g" },
+    { "id": "i2", "name": "Water, 96°C / 205°F", "amount": "360ml" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Rinse the filter", "instruction": "Place the filter in the dripper and rinse it with hot water to remove paper taste and preheat the vessel. Discard the rinse water.", "durationSeconds": 20, "tip": "A cold dripper pulls heat from your brew, so preheating matters." },
+    { "id": "s2", "title": "Add coffee and level", "instruction": "Add 22g of freshly ground coffee to the filter. Gently shake the dripper to level the bed, then zero your scale.", "durationSeconds": 20, "glossaryRefs": ["grind-size"] },
+    { "id": "s3", "title": "Bloom", "instruction": "Pour about 45g of water evenly over the grounds in a spiral, starting from the center. Let it sit and degas.", "durationSeconds": 45, "tip": "You should see bubbling — that's CO2 escaping fresh coffee.", "glossaryRefs": ["bloom"] },
+    { "id": "s4", "title": "First pour", "instruction": "Pour in slow spirals up to 150g total, avoiding the very edge of the filter.", "durationSeconds": 30, "glossaryRefs": ["channeling"] },
+    { "id": "s5", "title": "Second pour", "instruction": "Continue pouring in spirals up to 250g total, keeping the water level fairly steady.", "durationSeconds": 30 },
+    { "id": "s6", "title": "Final pour", "instruction": "Pour the remainder up to 360g total, then let the bed drain fully.", "durationSeconds": 45, "glossaryRefs": ["brew-ratio"] },
+    { "id": "s7", "title": "Drawdown", "instruction": "Let the water fully drain through the bed. Swirl the server gently before serving.", "durationSeconds": 20, "tip": "Total brew time of 2:30–3:30 is typical; adjust grind size if it runs faster or slower.", "glossaryRefs": ["drawdown"] }
+  ],
+  "source": { "label": "Classic V60 spiral-pour method", "type": "original" }
+}

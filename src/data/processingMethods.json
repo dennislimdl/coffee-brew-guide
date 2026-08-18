@@ -1,0 +1,5 @@
+[
+  { "id": "washed", "name": "Washed (wet process)", "description": "The fruit is pulped off and the remaining sticky layer is fermented off in water before drying, leaving just the bare seed to dry.", "flavorImpact": "Produces the cleanest, brightest cup of the three methods, with acidity and origin character most clearly on display." },
+  { "id": "natural", "name": "Natural (dry process)", "description": "The whole cherry is dried in the sun with the fruit still surrounding the seed, then hulled afterward.", "flavorImpact": "Produces a fuller-bodied, fruitier, sometimes wine-like or fermented-tasting cup, since the seed absorbs sugars from the drying fruit." },
+  { "id": "honey", "name": "Honey process", "description": "A middle ground — the skin is removed but some or all of the sticky mucilage layer is left on during drying.", "flavorImpact": "Falls between washed and natural: more body and sweetness than washed, but cleaner and less fruity than natural." }
+]

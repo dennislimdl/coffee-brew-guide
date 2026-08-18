@@ -1,0 +1,26 @@
+{
+  "id": "cold-brew-concentrate",
+  "name": "Cold Brew Concentrate",
+  "coffeeType": "cold",
+  "roastRecommendation": "medium",
+  "summary": "Long, low-temperature steep that produces a smooth, low-acid concentrate for diluting with water or milk.",
+  "totalTimeSeconds": 57600,
+  "servings": 6,
+  "difficulty": "easy",
+  "equipment": [
+    { "equipmentId": "jar" },
+    { "equipmentId": "strainer" },
+    { "equipmentId": "digital-scale" }
+  ],
+  "ingredients": [
+    { "id": "i1", "name": "Coffee, coarse grind", "amount": "100g" },
+    { "id": "i2", "name": "Cold or room-temp water", "amount": "700ml" }
+  ],
+  "steps": [
+    { "id": "s1", "title": "Combine", "instruction": "Add coarsely ground coffee to your jar, then pour in the water and stir to fully saturate all grounds.", "durationSeconds": 60, "glossaryRefs": ["immersion-brewing"] },
+    { "id": "s2", "title": "Steep", "instruction": "Cover and let steep at room temperature or in the fridge.", "durationSeconds": 57420, "tip": "12–16 hours is the typical range — longer steeps taste stronger and slightly more bitter." },
+    { "id": "s3", "title": "Strain", "instruction": "Strain through a fine mesh strainer, then again through a paper filter for a cleaner cup.", "durationSeconds": 90 },
+    { "id": "s4", "title": "Dilute and serve", "instruction": "This is a concentrate — dilute roughly 1:1 with water or milk over ice before drinking.", "durationSeconds": 30, "glossaryRefs": ["brew-ratio"] }
+  ],
+  "source": { "label": "Standard long-steep cold brew method", "type": "original" }
+}

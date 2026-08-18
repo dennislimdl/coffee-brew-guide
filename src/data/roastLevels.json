@@ -1,0 +1,5 @@
+[
+  { "id": "light", "name": "Light Roast", "description": "Roasted just past the first audible crack of the bean, stopping before much roast flavor develops. Lets the coffee's origin character — its acidity and fruit or floral notes — come through most clearly.", "acidity": "High", "body": "Light to medium", "commonFlavors": ["fruity", "floral", "tea-like", "bright"] },
+  { "id": "medium", "name": "Medium Roast", "description": "A balance point between origin character and roast character. The most common roast level for pour-over and drip brewing.", "acidity": "Medium", "body": "Medium", "commonFlavors": ["caramel", "nutty", "balanced sweetness", "some fruit"] },
+  { "id": "dark", "name": "Dark Roast", "description": "Roasted well past second crack, developing bold roast flavors that dominate over the bean's origin character. Beans often show a visible sheen of oil on the surface.", "acidity": "Low", "body": "Full, heavy", "commonFlavors": ["smoky", "bittersweet", "roasted", "bold"] }
+]

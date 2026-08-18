@@ -1,0 +1,22 @@
+[
+  { "id": "v60-dripper", "name": "V60 dripper", "category": "brewer", "description": "A cone-shaped dripper with a large single hole and spiral ridges that let water flow through at a controlled rate, giving you more control over extraction than flat-bottomed drippers." },
+  { "id": "paper-filter", "name": "Paper filter", "category": "filter", "description": "Traps oils and fine particles, producing a cleaner, lighter-bodied cup than metal filters or immersion brewing." },
+  { "id": "paper-filter-aeropress", "name": "AeroPress paper filter", "category": "filter", "description": "A small round filter sized specifically for the AeroPress cap — regular pour-over filters won't fit." },
+  { "id": "gooseneck-kettle", "name": "Gooseneck kettle", "category": "heating", "description": "A kettle with a narrow, curved spout that gives precise control over pour speed and placement, which matters for even saturation in pour-over brewing." },
+  { "id": "digital-scale", "name": "Digital scale", "category": "measuring", "description": "Weighing coffee and water (rather than using volume scoops) is the biggest single lever for consistent, repeatable brews." },
+  { "id": "server", "name": "Server or mug", "category": "accessory", "description": "Any vessel that sits under the brewer to catch coffee as it drains." },
+  { "id": "burr-grinder", "name": "Burr grinder", "category": "grinding", "description": "Crushes beans between two abrasive surfaces for a consistent particle size, unlike blade grinders which chop unevenly and produce a mix of fines and boulders." },
+  { "id": "french-press", "name": "French press", "category": "brewer", "description": "A cylindrical brewer with a mesh plunger. Coffee steeps fully immersed in water, then the plunger separates grounds from liquid." },
+  { "id": "stirring-spoon", "name": "Stirring spoon", "category": "accessory", "description": "Used to break up the crust of grounds that forms during immersion brewing and to stir in the water evenly." },
+  { "id": "kettle", "name": "Kettle", "category": "heating", "description": "Any kettle that can heat water to a controlled temperature — a gooseneck spout isn't necessary when precise pour placement doesn't matter, like in a French press." },
+  { "id": "aeropress", "name": "AeroPress", "category": "brewer", "description": "A plastic press brewer that combines immersion steeping with pressure filtration through a paper filter, producing a clean, fast cup." },
+  { "id": "stirring-paddle", "name": "Stirring paddle", "category": "accessory", "description": "A flat paddle (often included with the AeroPress) for stirring grounds without splashing." },
+  { "id": "moka-pot", "name": "Moka pot", "category": "brewer", "description": "A stovetop brewer with three chambers — water heats in the base, builds pressure, and pushes up through coffee grounds and into the top chamber." },
+  { "id": "stove", "name": "Stove or heat source", "category": "heating", "description": "Any stovetop burner or induction plate capable of a steady medium-low heat." },
+  { "id": "jar", "name": "Large jar or cold brew maker", "category": "brewer", "description": "Any large, sealable vessel works for cold brew — dedicated cold brew makers just add a built-in filter for convenience." },
+  { "id": "strainer", "name": "Fine mesh strainer or paper filter", "category": "filter", "description": "Removes coarse grounds after a long cold steep; a paper filter afterward removes remaining fine sediment for a cleaner concentrate." },
+  { "id": "espresso-machine", "name": "Espresso machine", "category": "brewer", "description": "Forces hot water through finely-ground, tamped coffee at high pressure (roughly 9 bar), producing a concentrated shot with crema." },
+  { "id": "espresso-grinder", "name": "Espresso grinder", "category": "grinding", "description": "A grinder capable of very fine, consistent particle sizes — espresso is far more sensitive to grind size than other methods, so a dedicated or high-quality grinder matters more here." },
+  { "id": "tamper", "name": "Tamper", "category": "accessory", "description": "Compresses grounds evenly in the portafilter basket so water passes through them uniformly instead of finding the path of least resistance." },
+  { "id": "portafilter", "name": "Portafilter", "category": "accessory", "description": "The handled basket that holds the dose of grounds and locks into the espresso machine's group head." }
+]
