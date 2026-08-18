@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import BrewPage from "@/pages/BrewPage";
@@ -13,6 +14,7 @@ import CoffeeProcessPage from "@/pages/learn/CoffeeProcessPage";
 import SpotsPage from "@/pages/spots/SpotsPage";
 import AddSpotPage from "@/pages/spots/AddSpotPage";
 import NavBar from "@/components/NavBar";
+import SplashScreen from "@/components/SplashScreen";
 
 // Recipe detail + the guided brew flow are immersive, full-screen experiences
 // with their own sticky action bars — the persistent tab bar would collide
@@ -53,8 +55,11 @@ function AppRoutes() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <BrowserRouter>
+      {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
       <AppRoutes />
     </BrowserRouter>
   );
