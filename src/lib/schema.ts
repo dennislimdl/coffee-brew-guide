@@ -139,6 +139,42 @@ export const coffeeProcessStageSchema = z.object({
   description: z.string().min(1),
 });
 
+export const equipmentPriceTierSchema = z.object({
+  tier: z.string().min(1),
+  priceRange: z.string().min(1),
+  picks: z.array(z.string().min(1)).min(1),
+});
+
+export const equipmentGuideEntrySchema = z.object({
+  id: z.string().min(1),
+  order: z.number().int().positive(),
+  name: z.string().min(1),
+  tagline: z.string().min(1),
+  whyItMatters: z.string().min(1),
+  priceTiers: z.array(equipmentPriceTierSchema).min(1),
+  hoffmannTake: z.string().min(1),
+});
+
+export const beanSpeciesSchema = z.object({
+  id: z.string().min(1),
+  order: z.number().int().positive(),
+  name: z.string().min(1),
+  shareOfProduction: z.string().min(1),
+  caffeineContent: z.string().min(1),
+  flavorProfile: z.string().min(1),
+  notes: z.string().min(1),
+});
+
+export const notableBeanSchema = z.object({
+  id: z.string().min(1),
+  order: z.number().int().positive(),
+  name: z.string().min(1),
+  origin: z.string().min(1),
+  description: z.string().min(1),
+  priceNote: z.string().min(1),
+  caveat: z.string().optional(),
+});
+
 export const coffeeSpotSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),

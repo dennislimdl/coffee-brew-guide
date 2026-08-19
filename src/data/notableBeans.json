@@ -1,0 +1,75 @@
+[
+  {
+    "id": "ethiopia-yirgacheffe",
+    "order": 1,
+    "name": "Ethiopia Yirgacheffe",
+    "origin": "Yirgacheffe, Ethiopia",
+    "description": "From the region widely credited as coffee's birthplace, grown at high altitude with heirloom varieties found nowhere else. Famous for a light body and intensely floral, tea-like, and citrusy cup — often the reference point for what \"bright\" coffee tastes like.",
+    "priceNote": "Specialty-grade retail: roughly $18–30 per pound"
+  },
+  {
+    "id": "panama-geisha",
+    "order": 2,
+    "name": "Panama Geisha (Gesha)",
+    "origin": "Boquete, Panama — originally an Ethiopian varietal",
+    "description": "The most sought-after coffee varietal in the world right now, prized for intense jasmine, bergamot, and stone-fruit notes with a tea-like body. Hacienda La Esmeralda's lots headline the annual Best of Panama auction.",
+    "priceNote": "A record lot from Hacienda La Esmeralda sold for $30,204 per kilogram (about $13,705/lb) at the 2025 Best of Panama auction — competition lots regularly clear $1,000+/kg"
+  },
+  {
+    "id": "jamaica-blue-mountain",
+    "order": 3,
+    "name": "Jamaica Blue Mountain",
+    "origin": "Blue Mountains, Jamaica",
+    "description": "Mild, well-balanced, and famously low in bitterness, grown at altitude in cool, misty conditions. Legally protected — Jamaica's Coffee Industry Board inspects and certifies every export, and only certified beans may use the name.",
+    "priceNote": "Around $36–100+ per pound retail, among the most consistently expensive coffees sold"
+  },
+  {
+    "id": "hawaii-kona",
+    "order": 4,
+    "name": "Hawaii Kona",
+    "origin": "Kona districts, Big Island, Hawaii",
+    "description": "The only coffee grown commercially in the United States, on volcanic soil with reliable afternoon cloud cover. Smooth and low-acid with a mild nutty sweetness; graded into strict tiers like \"Extra Fancy\" by the Hawaii Department of Agriculture.",
+    "priceNote": "Roughly $36–38 per pound retail for Extra Fancy grade"
+  },
+  {
+    "id": "kenya-aa",
+    "order": 5,
+    "name": "Kenya AA",
+    "origin": "Central Kenya highlands",
+    "description": "Graded \"AA\" for bean size — the largest screen size, not a flavor guarantee — and grown at high altitude with meticulous washed processing. Known for a wine-like, juicy acidity and blackcurrant or tomato-like notes rarely found elsewhere.",
+    "priceNote": "Specialty-grade retail: roughly $18–25 per pound"
+  },
+  {
+    "id": "sumatra-mandheling",
+    "order": 6,
+    "name": "Sumatra Mandheling",
+    "origin": "North Sumatra, Indonesia",
+    "description": "Processed with the regional \"giling basah\" (wet-hulling) method, giving it a heavy body, low acidity, and earthy, herbal, sometimes cedar-like flavor unlike almost any other origin.",
+    "priceNote": "Specialty-grade retail: roughly $16–22 per pound"
+  },
+  {
+    "id": "yemen-mocha",
+    "order": 7,
+    "name": "Yemen Mocha",
+    "origin": "Haraaz and Bani Matar mountains, Yemen",
+    "description": "Grown from ancient heirloom varieties on terraces largely unchanged for centuries, in one of the birthplaces of the coffee trade — the word \"mocha\" comes from Yemen's historic Red Sea port. Wine-like and spiced, with a distinctive wild character.",
+    "priceNote": "Specialty-grade retail: roughly $25–40 per pound, reflecting small harvests and difficult logistics"
+  },
+  {
+    "id": "vietnam-robusta",
+    "order": 8,
+    "name": "Vietnam Robusta",
+    "origin": "Central Highlands, Vietnam",
+    "description": "Vietnam is the world's largest robusta producer, and its beans are the backbone of most instant coffee and the base of Vietnamese egg coffee and cà phê sữa đá. Bold and heavy-bodied rather than nuanced, with a serious caffeine kick.",
+    "priceNote": "Among the cheapest coffee on the market: often under $8 per pound green"
+  },
+  {
+    "id": "kopi-luwak",
+    "order": 9,
+    "name": "Kopi Luwak (Civet Coffee)",
+    "origin": "Indonesia (Sumatra, Java, Bali)",
+    "description": "Cherries eaten and partially digested by the Asian palm civet, then collected from its droppings — fermentation in the civet's gut is claimed to soften the coffee's acidity and bitterness. Famous mostly for novelty and price rather than reliably being the best-tasting coffee.",
+    "priceNote": "A single cup can cost $30–100 in the US; whole beans often $100–600 per pound",
+    "caveat": "Most kopi luwak sold today comes from civets caged and force-fed coffee cherries in poor conditions, despite frequently being marketed as \"wild-sourced\" — worth knowing before buying."
+  }
+]

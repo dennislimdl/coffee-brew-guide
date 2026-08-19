@@ -24,6 +24,19 @@ const SECTIONS = [
     ],
   },
   {
+    id: "beans",
+    title: "Beans of the World",
+    description: "The four coffee species, and origins worth knowing by name.",
+    topics: [
+      {
+        to: "/learn/beans",
+        title: "Not All Beans Are Alike",
+        description: "Arabica, robusta, liberica, and excelsa — plus a tour of famous origins, from Ethiopian Yirgacheffe to the world's most expensive coffee.",
+        photo: PHOTOS.plantationHero,
+      },
+    ],
+  },
+  {
     id: "appreciation",
     title: "Appreciation of Coffee",
     description: "How to taste it, talk about it, and choose what you'll like.",
@@ -48,6 +61,19 @@ const SECTIONS = [
       },
     ],
   },
+  {
+    id: "equipment",
+    title: "Choosing Equipment",
+    description: "What's worth buying, at what price, and why.",
+    topics: [
+      {
+        to: "/learn/equipment",
+        title: "What's Worth Buying",
+        description: "Grinders, kettles, scales, brewers, filters, and espresso machines — quality tiers, price ranges, and James Hoffmann's take on each.",
+        photo: PHOTOS.pourOverHero,
+      },
+    ],
+  },
 ];
 
 export default function LearnHomePage() {
@@ -64,8 +90,8 @@ export default function LearnHomePage() {
         like the ones pictured here. Once picked, the seeds are processed to
         remove the fruit, dried, roasted, and finally ground and brewed — and
         a choice made at nearly every one of those steps changes what ends up
-        in your cup. Split into two halves below: how it's actually made, and
-        how to make sense of what you're tasting.
+        in your cup. Four angles on it below: how it's made, what kinds of
+        beans exist, how to taste and talk about it, and what to actually buy.
       </p>
 
       <div className="flex flex-col gap-9">

@@ -11,6 +11,8 @@ import RoastLevelsPage from "@/pages/learn/RoastLevelsPage";
 import OriginsPage from "@/pages/learn/OriginsPage";
 import GlossaryPage from "@/pages/learn/GlossaryPage";
 import CoffeeProcessPage from "@/pages/learn/CoffeeProcessPage";
+import EquipmentPage from "@/pages/learn/EquipmentPage";
+import BeansPage from "@/pages/learn/BeansPage";
 import SpotsPage from "@/pages/spots/SpotsPage";
 import AddSpotPage from "@/pages/spots/AddSpotPage";
 import AddSpotDetailsPage from "@/pages/spots/AddSpotDetailsPage";
@@ -41,6 +43,8 @@ function AppRoutes() {
 
           <Route path="/learn" element={<LearnHomePage />} />
           <Route path="/learn/process" element={<CoffeeProcessPage />} />
+          <Route path="/learn/equipment" element={<EquipmentPage />} />
+          <Route path="/learn/beans" element={<BeansPage />} />
           <Route path="/learn/tasting-notes" element={<TastingNotesPage />} />
           <Route path="/learn/roast-levels" element={<RoastLevelsPage />} />
           <Route path="/learn/origins" element={<OriginsPage />} />

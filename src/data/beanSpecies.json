@@ -1,0 +1,38 @@
+[
+  {
+    "id": "arabica",
+    "order": 1,
+    "name": "Arabica",
+    "shareOfProduction": "~60–70% of world production",
+    "caffeineContent": "~1.2–1.5% by weight",
+    "flavorProfile": "Sweeter, more acidic, and more aromatic — fruity, floral, or sugary notes depending on origin.",
+    "notes": "Grows best at high altitude (600–2,000m) in cooler climates. More susceptible to pests and disease, and lower-yielding than robusta, which is part of why it costs more. Almost all specialty coffee — and every tasting note in this app — is arabica."
+  },
+  {
+    "id": "robusta",
+    "order": 2,
+    "name": "Robusta",
+    "shareOfProduction": "~30–40% of world production",
+    "caffeineContent": "~2.2–2.7% by weight — nearly double arabica",
+    "flavorProfile": "Bolder and more bitter, often described as woody or rubbery, with less acidity and sweetness than arabica.",
+    "notes": "Hardier and higher-yielding than arabica, grows well at lower altitudes, and resists pests better — all of which makes it cheaper. Common in instant coffee and espresso blends, where it adds crema and body. Vietnam is the world's largest robusta producer."
+  },
+  {
+    "id": "liberica",
+    "order": 3,
+    "name": "Liberica",
+    "shareOfProduction": "Under 2% of world production",
+    "caffeineContent": "Between arabica and robusta",
+    "flavorProfile": "Unusual and polarizing — full-bodied and smoky, with floral and fruity notes some describe as jackfruit-like.",
+    "notes": "The trees grow large and irregular, making mechanized harvesting difficult, which keeps yields low and beans rare. Grown mainly in the Philippines, where it's known as Barako, and parts of Malaysia."
+  },
+  {
+    "id": "excelsa",
+    "order": 4,
+    "name": "Excelsa",
+    "shareOfProduction": "Under 1% of world production",
+    "caffeineContent": "Roughly similar to arabica",
+    "flavorProfile": "Distinctive — often described as fruity, tart, and spicy, sitting somewhere between light-roast arabica and dark-roast robusta.",
+    "notes": "Once classified as its own species, now generally treated as a variety of liberica (Coffea liberica var. dewevrei). Grown mostly in Southeast Asia and prized by blenders for adding complexity to a cup."
+  }
+]

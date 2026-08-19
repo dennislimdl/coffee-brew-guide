@@ -122,6 +122,42 @@ export interface CoffeeProcessStage {
   description: string;
 }
 
+export interface EquipmentPriceTier {
+  tier: string;
+  priceRange: string;
+  picks: string[];
+}
+
+export interface EquipmentGuideEntry {
+  id: string;
+  order: number;
+  name: string;
+  tagline: string;
+  whyItMatters: string;
+  priceTiers: EquipmentPriceTier[];
+  hoffmannTake: string;
+}
+
+export interface BeanSpecies {
+  id: string;
+  order: number;
+  name: string;
+  shareOfProduction: string;
+  caffeineContent: string;
+  flavorProfile: string;
+  notes: string;
+}
+
+export interface NotableBean {
+  id: string;
+  order: number;
+  name: string;
+  origin: string;
+  description: string;
+  priceNote: string;
+  caveat?: string;
+}
+
 // ---------------------------------------------------------------------------
 // Coffee spots — places the user has tried, logged with a map location
 // ---------------------------------------------------------------------------

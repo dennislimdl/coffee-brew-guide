@@ -1,0 +1,81 @@
+[
+  {
+    "id": "grinder",
+    "order": 1,
+    "name": "Grinder",
+    "tagline": "The single highest-impact purchase you can make.",
+    "whyItMatters": "Grind consistency determines how evenly water can extract flavor from coffee — get this wrong and no amount of skill downstream can fix it. A $200 burr grinder paired with an $8 plastic dripper will reliably outperform a $50 blade grinder paired with a $200 ceramic one, because blade grinders chop coffee into wildly uneven sizes that extract at different rates in the same brew.",
+    "priceTiers": [
+      { "tier": "Entry electric", "priceRange": "$130–180", "picks": ["Baratza Encore", "Timemore Chestnut C2"] },
+      { "tier": "Hand grinder (best value)", "priceRange": "$150–280", "picks": ["1Zpresso JX-Pro", "Comandante C40"] },
+      { "tier": "Mid-range electric", "priceRange": "$200–400", "picks": ["Fellow Ode Gen 2", "Timemore Sculptor 064"] },
+      { "tier": "Premium", "priceRange": "$700+", "picks": ["Lagom P64", "Lagom P100 with aftermarket burrs"] }
+    ],
+    "hoffmannTake": "Hoffmann treats a blade grinder as a hard no — inconsistent particle size makes even extraction close to impossible, and it's the upgrade he pushes hardest before anything else. His most consistent budget pick has been the Baratza Encore, and among hand grinders he rates the Comandante C40 as a longtime benchmark, with the 1Zpresso JX-Pro praised as arguably the best value in the category. He's also openly skeptical of grinders that pile on Bluetooth, touchscreens, or built-in scales instead of investing in better burrs."
+  },
+  {
+    "id": "kettle",
+    "order": 2,
+    "name": "Kettle",
+    "tagline": "Controls pour rate and placement — the main technique variable in pour-over.",
+    "whyItMatters": "A thin, steady gooseneck stream is what makes it possible to bloom coffee evenly and pour in controlled pulses. A regular kettle's wide spout dumps water all at once, making the kind of precise pouring pour-over technique depends on almost impossible.",
+    "priceTiers": [
+      { "tier": "Stovetop gooseneck", "priceRange": "$25–40", "picks": ["Hario Buono"] },
+      { "tier": "Electric, variable temperature", "priceRange": "$70–100", "picks": ["Bonavita Variable Temperature Kettle"] },
+      { "tier": "Electric, precise temperature control", "priceRange": "$150–200", "picks": ["Fellow Stagg EKG", "Fellow Stagg EKG+"] }
+    ],
+    "hoffmannTake": "Electric temperature control is a genuine convenience — no more guessing when water's cooled into pour-over range — but Hoffmann has been clear it's a nice-to-have, not a requirement: a $30 stovetop gooseneck plus a cheap thermometer gets you the same result. His comparison videos of electric gooseneck kettles found real differences in pour control and heat-up time between models, but nothing as dramatic a jump as moving off a blade grinder."
+  },
+  {
+    "id": "scale",
+    "order": 3,
+    "name": "Scale",
+    "tagline": "Coffee and water ratios are the recipe — eyeballing them isn't.",
+    "whyItMatters": "Brewing is a ratio of coffee weight to water weight, timed against specific pour intervals. A scale with a built-in timer removes the single biggest source of inconsistency between one cup and the next — without one, a recipe is just a guess.",
+    "priceTiers": [
+      { "tier": "Basic kitchen scale", "priceRange": "$15–25", "picks": ["Any 0.1g-resolution kitchen scale + separate timer"] },
+      { "tier": "Best value", "priceRange": "$50–85", "picks": ["Timemore Black Mirror Basic Plus"] },
+      { "tier": "Premium / commercial-grade", "priceRange": "$150–250", "picks": ["Acaia Pearl S", "Acaia Lunar"] }
+    ],
+    "hoffmannTake": "Hoffmann has said outright that he thinks Acaia's scales are too expensive for most people — genuinely excellent, but priced for people \"for whom $250 isn't a meaningful expenditure.\" His practical fallback: a Timemore Black Mirror closes most of the performance gap at roughly half the price, and even a plain kitchen scale paired with a separate timer is enough to brew consistently."
+  },
+  {
+    "id": "brewer",
+    "order": 4,
+    "name": "Brewer / Dripper",
+    "tagline": "Different shapes trade off control for forgiveness.",
+    "whyItMatters": "A cone-shaped dripper concentrates flow through a small bed and rewards precise technique; flatter beds and immersion brewers are more forgiving of an imperfect pour. None of them is objectively \"best\" — they suit different amounts of attention you want to put into each cup.",
+    "priceTiers": [
+      { "tier": "Classic cone", "priceRange": "$10–30", "picks": ["Hario V60", "Kalita Wave"] },
+      { "tier": "More forgiving", "priceRange": "$40–50", "picks": ["Chemex"] },
+      { "tier": "Hybrid immersion/drip", "priceRange": "$45–60", "picks": ["Hario Switch"] },
+      { "tier": "Full immersion", "priceRange": "$15–40", "picks": ["AeroPress", "French press"] }
+    ],
+    "hoffmannTake": "Hoffmann is Hario's official V60 ambassador and has spent years refining what's now widely called the \"Ultimate V60\" recipe — a finer grind and hotter water than most older guides suggest. He's also candid that the V60 rewards precise technique more than it forgives mistakes, and has pointed newer brewers toward the Kalita Wave or the Hario Switch — which lets you brew as an immersion first, then switch to drip — as more forgiving starting points; the Switch has become one of his own most-used daily brewers in recent videos."
+  },
+  {
+    "id": "filters",
+    "order": 5,
+    "name": "Filters",
+    "tagline": "The cheapest thing in your setup, with an outsized effect on taste.",
+    "whyItMatters": "Paper filters trap oils and fine sediment for a cleaner, lighter cup; metal filters let more body and oil through for a heavier, sometimes muddier one. Filter thickness and shape also change flow rate — the wrong filter for a given dripper can throttle the brew or let it blow through too fast.",
+    "priceTiers": [
+      { "tier": "Paper (bleached/unbleached)", "priceRange": "$5–10 per 100", "picks": ["Hario tabbed filters", "Cafec Abaca filters"] },
+      { "tier": "Reusable metal", "priceRange": "$10–20 one-time", "picks": ["Able Kone", "Cafflano metal filter"] }
+    ],
+    "hoffmannTake": "Rinsing paper filters with hot water before brewing is one of the smallest, most-repeated pieces of advice across Hoffmann's videos — it clears any papery taste and preheats the dripper. He generally prefers paper for the cleaner cup it produces, treating metal filters as a legitimate but genuinely different-tasting choice rather than an upgrade."
+  },
+  {
+    "id": "espresso-machine",
+    "order": 6,
+    "name": "Espresso Machine",
+    "tagline": "The most expensive category, and the easiest to overspend on before your grinder is ready.",
+    "whyItMatters": "Espresso is far less forgiving of a mediocre grinder than filter coffee — inconsistent particles show up immediately as sour or bitter shots. Spending most of a budget on the machine and starving the grinder is the most common beginner mistake in espresso.",
+    "priceTiers": [
+      { "tier": "Entry prosumer", "priceRange": "$400–450", "picks": ["Gaggia Classic Pro"] },
+      { "tier": "Mid-range", "priceRange": "$700–1,200", "picks": ["Rancilio Silvia", "Profitec Go"] },
+      { "tier": "Enthusiast / semi-commercial", "priceRange": "$2,000+", "picks": ["Decent DE1", "Profitec Pro 700"] }
+    ],
+    "hoffmannTake": "Hoffmann's long-running budget-espresso advice is to buy the Gaggia Classic Pro and put whatever's left toward the grinder, not the other way round — it uses genuine commercial-style parts (a 58mm portafilter, a three-way solenoid valve) at a fraction of the price of machines that look flashier but cut corners where it counts. He's also flagged \"stop-on-weight\" brewing, standard on high-end machines like the Decent DE1, as one of the few espresso features that meaningfully improves consistency rather than just convenience."
+  }
+]

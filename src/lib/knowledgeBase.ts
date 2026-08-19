@@ -10,6 +10,9 @@ import {
   RoastLevelGuide,
   ProcessingMethod,
   CoffeeProcessStage,
+  EquipmentGuideEntry,
+  BeanSpecies,
+  NotableBean,
 } from "@/types";
 import {
   recipeSchema,
@@ -21,6 +24,9 @@ import {
   roastLevelGuideSchema,
   processingMethodSchema,
   coffeeProcessStageSchema,
+  equipmentGuideEntrySchema,
+  beanSpeciesSchema,
+  notableBeanSchema,
 } from "@/lib/schema";
 
 import equipmentRaw from "@/data/equipment.json";
@@ -31,6 +37,9 @@ import tastingNotesRaw from "@/data/tastingNotes.json";
 import roastLevelsRaw from "@/data/roastLevels.json";
 import processingMethodsRaw from "@/data/processingMethods.json";
 import coffeeProcessRaw from "@/data/coffeeProcess.json";
+import equipmentGuideRaw from "@/data/equipmentGuide.json";
+import beanSpeciesRaw from "@/data/beanSpecies.json";
+import notableBeansRaw from "@/data/notableBeans.json";
 
 // Eagerly import every recipe file — adding a new recipe is just adding a
 // new JSON file to src/data/recipes/, no other code changes needed.
@@ -100,6 +109,24 @@ export const coffeeProcessStages: CoffeeProcessStage[] = parseAll(
   coffeeProcessStageSchema,
   coffeeProcessRaw as unknown[],
   "coffee process stage"
+).sort((a, b) => a.order - b.order);
+
+export const equipmentGuide: EquipmentGuideEntry[] = parseAll(
+  equipmentGuideEntrySchema,
+  equipmentGuideRaw as unknown[],
+  "equipment guide entry"
+).sort((a, b) => a.order - b.order);
+
+export const beanSpeciesList: BeanSpecies[] = parseAll(
+  beanSpeciesSchema,
+  beanSpeciesRaw as unknown[],
+  "bean species"
+).sort((a, b) => a.order - b.order);
+
+export const notableBeans: NotableBean[] = parseAll(
+  notableBeanSchema,
+  notableBeansRaw as unknown[],
+  "notable bean"
 ).sort((a, b) => a.order - b.order);
 
 const recipes: Recipe[] = Object.entries(recipeModules)
