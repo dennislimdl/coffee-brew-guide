@@ -30,7 +30,9 @@ export default function OpenFreeMapLayer({ recenterTo }: Props) {
 
   useEffect(() => {
     const layer = (L as LeafletWithMaplibre).maplibreGL({ style: STYLE_URL }).addTo(map);
-    map.attributionControl.addAttribution(
+    // Thumbnail/read-only maps (e.g. the step-2 location summary) disable
+    // Leaflet's attribution control entirely via `attributionControl={false}`.
+    map.attributionControl?.addAttribution(
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, tiles by <a href="https://openfreemap.org">OpenFreeMap</a>'
     );
     return () => {

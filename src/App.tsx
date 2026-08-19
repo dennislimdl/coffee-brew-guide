@@ -13,6 +13,7 @@ import GlossaryPage from "@/pages/learn/GlossaryPage";
 import CoffeeProcessPage from "@/pages/learn/CoffeeProcessPage";
 import SpotsPage from "@/pages/spots/SpotsPage";
 import AddSpotPage from "@/pages/spots/AddSpotPage";
+import AddSpotDetailsPage from "@/pages/spots/AddSpotDetailsPage";
 import NavBar from "@/components/NavBar";
 import SplashScreen from "@/components/SplashScreen";
 
@@ -47,6 +48,7 @@ function AppRoutes() {
 
           <Route path="/spots" element={<SpotsPage />} />
           <Route path="/spots/new" element={<AddSpotPage />} />
+          <Route path="/spots/new/details" element={<AddSpotDetailsPage />} />
         </Routes>
       </div>
       {showNavBar && <NavBar />}
