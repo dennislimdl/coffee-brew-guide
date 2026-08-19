@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { MapContainer, Marker, useMap, useMapEvents } from "react-leaflet";
+import { MapContainer, Marker, useMapEvents } from "react-leaflet";
 import { addSpot } from "@/lib/spotsStore";
 import { fixLeafletIcons } from "@/lib/leafletIcons";
 import OpenFreeMapLayer from "@/components/OpenFreeMapLayer";
@@ -115,16 +115,6 @@ function LocationPicker({
   return position ? <Marker position={position} /> : null;
 }
 
-/** Keeps the map view in sync when the pin moves programmatically (search select, geolocation) — MapContainer's `center` prop only applies on first mount. */
-function RecenterOnMove({ position }: { position: [number, number] | null }) {
-  const map = useMap();
-  useEffect(() => {
-    if (position) {
-      map.setView(position, Math.max(map.getZoom(), 15));
-    }
-  }, [position, map]);
-  return null;
-}
 
 export default function AddSpotPage() {
   const navigate = useNavigate();
@@ -419,9 +409,8 @@ export default function AddSpotPage() {
               scrollWheelZoom={false}
               className="h-full w-full"
             >
-              <OpenFreeMapLayer />
+              <OpenFreeMapLayer recenterTo={position} />
               <LocationPicker position={position} onPick={(pos) => placePin(pos, undefined, false)} />
-              <RecenterOnMove position={position} />
             </MapContainer>
           </div>
           <button

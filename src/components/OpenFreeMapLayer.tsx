@@ -13,7 +13,19 @@ type LeafletWithMaplibre = typeof L & {
   maplibreGL: (options: { style: string }) => L.Layer;
 };
 
-export default function OpenFreeMapLayer() {
+interface Props {
+  /**
+   * When set (and changes), the map jumps here instead of wherever it was —
+   * used for search-result selection, "use my current location", etc.
+   * `animate: false` matters: MapContainer's `center` prop only applies on
+   * first mount, so this is how later moves get applied, and an instant
+   * jump avoids Leaflet's animated-zoom code path entirely for what's
+   * meant to be a snap-to-location, not a smooth pan.
+   */
+  recenterTo?: [number, number] | null;
+}
+
+export default function OpenFreeMapLayer({ recenterTo }: Props) {
   const map = useMap();
 
   useEffect(() => {
@@ -25,6 +37,12 @@ export default function OpenFreeMapLayer() {
       map.removeLayer(layer);
     };
   }, [map]);
+
+  useEffect(() => {
+    if (recenterTo) {
+      map.setView(recenterTo, Math.max(map.getZoom(), 15), { animate: false });
+    }
+  }, [recenterTo, map]);
 
   return null;
 }
