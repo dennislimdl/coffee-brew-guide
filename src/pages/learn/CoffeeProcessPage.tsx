@@ -9,7 +9,7 @@ export default function CoffeeProcessPage() {
     <main className="mx-auto min-h-screen max-w-md px-4 pb-12">
       <PhotoBanner
         photo={PHOTOS.coffeeCherries}
-        eyebrow="Introduction to Coffee"
+        eyebrow="How Coffee Is Made"
         title="Cherry to cup"
       />
 

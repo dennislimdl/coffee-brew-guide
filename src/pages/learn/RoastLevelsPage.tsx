@@ -14,7 +14,7 @@ export default function RoastLevelsPage() {
     <main className="mx-auto min-h-screen max-w-md px-4 pb-12">
       <PhotoBanner
         photo={PHOTOS.roasteryMachine}
-        eyebrow="Introduction to Coffee"
+        eyebrow="Appreciation of Coffee"
         title="Roast levels"
         compact
       />

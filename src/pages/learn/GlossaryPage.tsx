@@ -18,7 +18,7 @@ export default function GlossaryPage() {
     <main className="mx-auto min-h-screen max-w-md px-4 pb-12">
       <PhotoBanner
         photo={PHOTOS.roasteryHero}
-        eyebrow="Introduction to Coffee"
+        eyebrow="Appreciation of Coffee"
         title="Brewing glossary"
         compact
       />

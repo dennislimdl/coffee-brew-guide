@@ -8,7 +8,7 @@ export default function OriginsPage() {
     <main className="mx-auto min-h-screen max-w-md px-4 pb-12">
       <PhotoBanner
         photo={PHOTOS.plantationColombia}
-        eyebrow="Introduction to Coffee"
+        eyebrow="How Coffee Is Made"
         title="Origins & processing"
         compact
       />

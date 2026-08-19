@@ -8,7 +8,7 @@ export default function TastingNotesPage() {
     <main className="mx-auto min-h-screen max-w-md px-4 pb-12">
       <PhotoBanner
         photo={PHOTOS.plantationKaratu}
-        eyebrow="Introduction to Coffee"
+        eyebrow="Appreciation of Coffee"
         title="Reading tasting notes"
         compact
       />
