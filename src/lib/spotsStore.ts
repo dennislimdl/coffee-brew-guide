@@ -48,3 +48,13 @@ export function addSpot(spot: Omit<CoffeeSpot, "id" | "createdAt">): CoffeeSpot 
 export function deleteSpot(id: string): void {
   writeAll(readAll().filter((s) => s.id !== id));
 }
+
+export function updateSpot(id: string, patch: Partial<Omit<CoffeeSpot, "id" | "createdAt">>): CoffeeSpot | undefined {
+  const all = readAll();
+  const index = all.findIndex((s) => s.id === id);
+  if (index === -1) return undefined;
+  const updated = coffeeSpotSchema.parse({ ...all[index], ...patch });
+  all[index] = updated;
+  writeAll(all);
+  return updated;
+}

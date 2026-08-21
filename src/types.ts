@@ -180,9 +180,11 @@ export interface CoffeeSpot {
   lat: number;
   lng: number;
   address?: string;
-  /** Google Place photo URIs, captured when the spot was added. */
+  /** The Google Place this spot is linked to — lets photos/reviews be refreshed later, since Google's photo URLs expire. */
+  placeId?: string;
+  /** Google Place photo URIs, captured when the spot was added or last refreshed. These expire after a while — see placeId. */
   photos?: string[];
-  /** A few Google reviews, captured when the spot was added. */
+  /** A few Google reviews, captured when the spot was added or last refreshed. */
   reviews?: PlaceReview[];
   createdAt: string; // ISO timestamp
 }

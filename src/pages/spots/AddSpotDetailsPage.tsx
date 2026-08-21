@@ -6,6 +6,7 @@ import { PlaceReview } from "@/lib/googlePlaces";
 
 interface LocationState {
   position: [number, number];
+  placeId?: string;
   name: string;
   address: string;
   photos?: string[];
@@ -28,7 +29,7 @@ export default function AddSpotDetailsPage() {
   if (!state?.position) {
     return <Navigate to="/spots/new" replace />;
   }
-  const { position, address, photos, reviews } = state;
+  const { position, placeId, address, photos, reviews } = state;
   const center = { lat: position[0], lng: position[1] };
 
   function handleSubmit(e: React.FormEvent) {
@@ -45,6 +46,7 @@ export default function AddSpotDetailsPage() {
       lat: position[0],
       lng: position[1],
       address: address || undefined,
+      placeId,
       photos: photos && photos.length > 0 ? photos : undefined,
       reviews: reviews && reviews.length > 0 ? reviews : undefined,
     });

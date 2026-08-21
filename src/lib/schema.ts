@@ -192,6 +192,7 @@ export const coffeeSpotSchema = z.object({
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
   address: z.string().optional(),
+  placeId: z.string().optional(),
   photos: z.array(z.string()).optional(),
   reviews: z.array(placeReviewSchema).optional(),
   createdAt: z.string().min(1),

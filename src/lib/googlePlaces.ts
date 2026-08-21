@@ -15,14 +15,57 @@ export interface PlaceReview {
 }
 
 export interface PlaceDetails {
+  placeId: string;
   name: string;
   address: string;
   lat: number;
   lng: number;
-  /** Real Google-sourced photos of the place, when available. */
+  /**
+   * Real Google-sourced photo URLs. Note: these are short-lived — Google
+   * doesn't guarantee they stay valid for long-term storage — so anything
+   * persisting them should also keep `placeId` around to refresh later.
+   */
   photoUrls: string[];
-  /** Up to 5 Google reviews, when available (Places "Atmosphere" data — a pricier field than basics, fetched only once per confirmed place). */
+  /** Up to 5 Google reviews, when available (Places "Atmosphere" data — a pricier field than basics). */
   reviews: PlaceReview[];
+}
+
+const DETAIL_FIELDS = [
+  "id",
+  "displayName",
+  "formattedAddress",
+  "location",
+  "photos",
+  "reviews",
+];
+
+function placeToDetails(place: google.maps.places.Place): PlaceDetails | null {
+  if (!place.location || !place.id) return null;
+
+  const photoUrls = (place.photos ?? [])
+    .slice(0, 8)
+    .map((photo) => photo.getURI({ maxWidth: 900 }));
+
+  const reviews: PlaceReview[] = (place.reviews ?? [])
+    .slice(0, 5)
+    .filter((r) => r.text && r.rating != null)
+    .map((r) => ({
+      authorName: r.authorAttribution?.displayName ?? "Google user",
+      authorPhotoUrl: r.authorAttribution?.photoURI ?? undefined,
+      rating: r.rating!,
+      text: r.text!,
+      relativeTime: r.relativePublishTimeDescription ?? "",
+    }));
+
+  return {
+    placeId: place.id,
+    name: place.displayName ?? "",
+    address: place.formattedAddress ?? "",
+    lat: place.location.lat(),
+    lng: place.location.lng(),
+    photoUrls,
+    reviews,
+  };
 }
 
 let sessionToken: google.maps.places.AutocompleteSessionToken | null = null;
@@ -72,35 +115,34 @@ export async function searchPlaces(
 export async function getPlaceDetails(placeId: string): Promise<PlaceDetails | null> {
   const { Place } = (await google.maps.importLibrary("places")) as google.maps.PlacesLibrary;
   const place = new Place({ id: placeId });
-  await place.fetchFields({
-    fields: ["displayName", "formattedAddress", "location", "photos", "reviews"],
-  });
+  await place.fetchFields({ fields: DETAIL_FIELDS });
   resetSessionToken(); // picking a place ends the autocomplete session
+  return placeToDetails(place);
+}
 
-  if (!place.location) return null;
-  const photoUrls = (place.photos ?? [])
-    .slice(0, 8)
-    .map((photo) => photo.getURI({ maxWidth: 900 }));
-
-  const reviews: PlaceReview[] = (place.reviews ?? [])
-    .slice(0, 5)
-    .filter((r) => r.text && r.rating != null)
-    .map((r) => ({
-      authorName: r.authorAttribution?.displayName ?? "Google user",
-      authorPhotoUrl: r.authorAttribution?.photoURI ?? undefined,
-      rating: r.rating!,
-      text: r.text!,
-      relativeTime: r.relativePublishTimeDescription ?? "",
-    }));
-
-  return {
-    name: place.displayName ?? "",
-    address: place.formattedAddress ?? "",
-    lat: place.location.lat(),
-    lng: place.location.lng(),
-    photoUrls,
-    reviews,
+/**
+ * Finds the best-matching place for free text (a saved name + address) and
+ * returns its full details in one call — used to backfill spots that were
+ * saved before photos/reviews were linked, or to refresh a spot whose
+ * stored photo URLs have expired.
+ */
+export async function findPlaceByText(
+  query: string,
+  bias?: [number, number] | null
+): Promise<PlaceDetails | null> {
+  const { Place } = (await google.maps.importLibrary("places")) as google.maps.PlacesLibrary;
+  const request: google.maps.places.SearchByTextRequest = {
+    textQuery: query,
+    fields: DETAIL_FIELDS,
+    maxResultCount: 1,
   };
+  if (bias) {
+    request.locationBias = { lat: bias[0], lng: bias[1] };
+  }
+  const { places } = await Place.searchByText(request);
+  const place = places[0];
+  if (!place) return null;
+  return placeToDetails(place);
 }
 
 /** Looks up a name + address for a pin dropped by tap or geolocation (rather than search). */

@@ -17,6 +17,7 @@ export default function AddSpotPage() {
   const navigate = useNavigate();
 
   const [position, setPosition] = useState<[number, number] | null>(null);
+  const [placeId, setPlaceId] = useState<string | null>(null);
   const [name, setName] = useState<string | null>(null);
   const [address, setAddress] = useState<string | null>(null);
   const [photos, setPhotos] = useState<string[]>([]);
@@ -75,6 +76,7 @@ export default function AddSpotPage() {
 
   function applyPlace(details: PlaceDetails) {
     setPosition([details.lat, details.lng]);
+    setPlaceId(details.placeId);
     setName(details.name);
     setAddress(details.address);
     setPhotos(details.photoUrls);
@@ -100,6 +102,7 @@ export default function AddSpotPage() {
 
   async function placePinManually(pos: [number, number]) {
     setPosition(pos);
+    setPlaceId(null);
     setName(null);
     setAddress(null);
     setPhotos([]);
@@ -138,6 +141,7 @@ export default function AddSpotPage() {
 
   function reset() {
     setPosition(null);
+    setPlaceId(null);
     setName(null);
     setAddress(null);
     setPhotos([]);
@@ -148,7 +152,14 @@ export default function AddSpotPage() {
   function confirmPlace() {
     if (!position) return;
     navigate("/spots/new/details", {
-      state: { position, name: name ?? "", address: address ?? "", photos, reviews },
+      state: {
+        position,
+        placeId: placeId ?? undefined,
+        name: name ?? "",
+        address: address ?? "",
+        photos,
+        reviews,
+      },
     });
   }
 
