@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Map, AdvancedMarker, Pin, InfoWindow, useMap } from "@vis.gl/react-google-maps";
 import { getAllSpots, deleteSpot, updateSpot } from "@/lib/spotsStore";
@@ -28,14 +28,28 @@ function FitToSpots({ spots }: { spots: CoffeeSpot[] }) {
   return null;
 }
 
-/** Pans (and zooms in on) whichever spot was just picked from the list, so tapping a card takes you straight to it on the map. */
-function PanToSelected({ position }: { position: { lat: number; lng: number } | null }) {
+/**
+ * Pans (and zooms in on) whichever spot was just picked from the list, so
+ * tapping a card takes you straight to it on the map. `trigger` is an
+ * incrementing counter rather than relying on `position` alone — clicking
+ * "Show on map" again for the *same* spot doesn't change selectedId (React
+ * bails out of a no-op state update), so without it a repeat tap on the
+ * same card would silently do nothing.
+ */
+function PanToSelected({
+  position,
+  trigger,
+}: {
+  position: { lat: number; lng: number } | null;
+  trigger: number;
+}) {
   const map = useMap();
   useEffect(() => {
     if (!map || !position) return;
     map.panTo(position);
-    if (map.getZoom() != null && map.getZoom()! < 15) map.setZoom(15);
-  }, [map, position]);
+    map.setZoom(Math.max(map.getZoom() ?? 0, 15));
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- position's identity changes every render; lat/lng + trigger are the real deps
+  }, [map, position?.lat, position?.lng, trigger]);
   return null;
 }
 
@@ -135,12 +149,21 @@ export default function SpotsPage() {
 
   const center = spots.length > 0 ? { lat: spots[0].lat, lng: spots[0].lng } : DEFAULT_CENTER;
   const selected = spots.find((s) => s.id === selectedId) ?? null;
+  const selectedPosition = useMemo(
+    () => (selected ? { lat: selected.lat, lng: selected.lng } : null),
+    [selected]
+  );
   const needsBackfill = spots.some((s) => !s.placeId);
   const mapSectionRef = useRef<HTMLDivElement>(null);
+  const [showOnMapNonce, setShowOnMapNonce] = useState(0);
+  const [pulseMap, setPulseMap] = useState(false);
 
   function showOnMap(id: string) {
     setSelectedId(id);
+    setShowOnMapNonce((n) => n + 1);
     mapSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setPulseMap(true);
+    setTimeout(() => setPulseMap(false), 1500);
   }
 
   return (
@@ -174,7 +197,12 @@ export default function SpotsPage() {
         </div>
       )}
 
-      <div ref={mapSectionRef} className="h-64 w-full scroll-mt-6 overflow-hidden rounded border border-husk/10">
+      <div
+        ref={mapSectionRef}
+        className={`h-64 w-full scroll-mt-6 overflow-hidden rounded border transition-shadow duration-500 ${
+          pulseMap ? "border-roast-light ring-4 ring-roast-light/40" : "border-husk/10"
+        }`}
+      >
         <Map
           center={center}
           zoom={spots.length > 0 ? 13 : 3}
@@ -186,19 +214,19 @@ export default function SpotsPage() {
           className="h-full w-full"
         >
           <FitToSpots spots={spots} />
-          <PanToSelected position={selected ? { lat: selected.lat, lng: selected.lng } : null} />
+          <PanToSelected position={selectedPosition} trigger={showOnMapNonce} />
           {spots.map((spot) => (
             <AdvancedMarker
               key={spot.id}
               position={{ lat: spot.lat, lng: spot.lng }}
-              onClick={() => setSelectedId(spot.id)}
+              onClick={() => showOnMap(spot.id)}
+              zIndex={spot.id === selectedId ? 1 : 0}
             >
-              <Pin
-                background={spot.id === selectedId ? "#C9A66B" : "#3E2417"}
-                borderColor="#1B1512"
-                glyphColor="#EDE6DA"
-                scale={spot.id === selectedId ? 1.15 : 1}
-              />
+              {spot.id === selectedId ? (
+                <Pin background="#EDE6DA" borderColor="#C9A66B" glyphColor="#1B1512" scale={1.4} />
+              ) : (
+                <Pin background="#3E2417" borderColor="#1B1512" glyphColor="#EDE6DA" />
+              )}
             </AdvancedMarker>
           ))}
           {selected && (
