@@ -97,7 +97,7 @@ export default function SpotsPage() {
           </p>
         )}
         {spots.map((spot) => (
-          <div key={spot.id} className="rounded border border-husk/10 bg-bark p-3">
+          <div key={spot.id} className="rounded-xl border border-husk/10 bg-bark p-3">
             <div className="flex items-start justify-between gap-2">
               <div>
                 <p className="font-display text-base font-semibold text-husk">{spot.name}</p>
@@ -109,9 +109,51 @@ export default function SpotsPage() {
               <p className="mt-1.5 text-sm text-husk/70">{spot.drinkOrdered}</p>
             )}
             {spot.notes && <p className="mt-1 text-xs text-husk/50">{spot.notes}</p>}
+
+            {spot.photos && spot.photos.length > 0 && (
+              <div className="mt-2.5 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+                {spot.photos.map((url, i) => (
+                  <img
+                    key={url}
+                    src={url}
+                    alt={`${spot.name} photo ${i + 1}`}
+                    loading="lazy"
+                    className="h-20 w-28 shrink-0 rounded-lg object-cover"
+                  />
+                ))}
+              </div>
+            )}
+
+            {spot.reviews && spot.reviews.length > 0 && (
+              <details className="mt-2.5">
+                <summary className="cursor-pointer text-xs text-roast-light underline decoration-dotted underline-offset-2">
+                  {spot.reviews.length} Google review{spot.reviews.length > 1 ? "s" : ""}
+                </summary>
+                <div className="mt-2 flex flex-col gap-2.5 border-t border-husk/10 pt-2.5">
+                  {spot.reviews.map((review, i) => (
+                    <div key={i} className="text-xs">
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="text-roast-light"
+                          aria-label={`${review.rating} out of 5 stars`}
+                        >
+                          {"★".repeat(review.rating)}
+                          <span className="text-husk/20">{"★".repeat(5 - review.rating)}</span>
+                        </span>
+                        <span className="text-husk/40">
+                          {review.authorName} · {review.relativeTime}
+                        </span>
+                      </div>
+                      <p className="mt-0.5 text-husk/60">{review.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+
             <button
               onClick={() => handleDelete(spot.id)}
-              className="mt-2 text-xs text-husk/30 hover:text-husk/60"
+              className="mt-2.5 text-xs text-husk/30 hover:text-husk/60"
             >
               Remove
             </button>

@@ -4,6 +4,7 @@ import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import {
   PlaceSuggestion,
   PlaceDetails,
+  PlaceReview,
   searchPlaces,
   getPlaceDetails,
   reverseGeocode,
@@ -19,6 +20,7 @@ export default function AddSpotPage() {
   const [name, setName] = useState<string | null>(null);
   const [address, setAddress] = useState<string | null>(null);
   const [photos, setPhotos] = useState<string[]>([]);
+  const [reviews, setReviews] = useState<PlaceReview[]>([]);
   const [placeLoading, setPlaceLoading] = useState(false);
   const [locating, setLocating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -76,6 +78,7 @@ export default function AddSpotPage() {
     setName(details.name);
     setAddress(details.address);
     setPhotos(details.photoUrls);
+    setReviews(details.reviews);
     setError(null);
   }
 
@@ -100,6 +103,7 @@ export default function AddSpotPage() {
     setName(null);
     setAddress(null);
     setPhotos([]);
+    setReviews([]);
     setError(null);
     setPlaceLoading(true);
     try {
@@ -137,13 +141,14 @@ export default function AddSpotPage() {
     setName(null);
     setAddress(null);
     setPhotos([]);
+    setReviews([]);
     setError(null);
   }
 
   function confirmPlace() {
     if (!position) return;
     navigate("/spots/new/details", {
-      state: { position, name: name ?? "", address: address ?? "", photos },
+      state: { position, name: name ?? "", address: address ?? "", photos, reviews },
     });
   }
 
@@ -271,6 +276,25 @@ export default function AddSpotPage() {
                   loading="lazy"
                   className="h-24 w-32 shrink-0 rounded-lg object-cover"
                 />
+              ))}
+            </div>
+          )}
+
+          {reviews.length > 0 && (
+            <div className="mt-3 flex flex-col gap-2 border-t border-husk/10 pt-3">
+              {reviews.slice(0, 2).map((review, i) => (
+                <div key={i} className="text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-roast-light" aria-label={`${review.rating} out of 5 stars`}>
+                      {"★".repeat(review.rating)}
+                      <span className="text-husk/20">{"★".repeat(5 - review.rating)}</span>
+                    </span>
+                    <span className="text-husk/40">
+                      {review.authorName} · {review.relativeTime}
+                    </span>
+                  </div>
+                  <p className="mt-0.5 line-clamp-2 text-husk/60">{review.text}</p>
+                </div>
               ))}
             </div>
           )}

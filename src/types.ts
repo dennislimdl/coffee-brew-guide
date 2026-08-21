@@ -162,6 +162,15 @@ export interface NotableBean {
 // Coffee spots — places the user has tried, logged with a map location
 // ---------------------------------------------------------------------------
 
+/** A Google review, captured at the time the spot was added — a snapshot, not a live sync. */
+export interface PlaceReview {
+  authorName: string;
+  authorPhotoUrl?: string;
+  rating: number; // 1-5
+  text: string;
+  relativeTime: string; // e.g. "2 months ago", as supplied by Google
+}
+
 export interface CoffeeSpot {
   id: string;
   name: string;
@@ -171,6 +180,10 @@ export interface CoffeeSpot {
   lat: number;
   lng: number;
   address?: string;
+  /** Google Place photo URIs, captured when the spot was added. */
+  photos?: string[];
+  /** A few Google reviews, captured when the spot was added. */
+  reviews?: PlaceReview[];
   createdAt: string; // ISO timestamp
 }
 

@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useNavigate, useLocation, Navigate, Link } from "react-router-dom";
 import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import { addSpot } from "@/lib/spotsStore";
+import { PlaceReview } from "@/lib/googlePlaces";
 
 interface LocationState {
   position: [number, number];
   name: string;
   address: string;
+  photos?: string[];
+  reviews?: PlaceReview[];
 }
 
 export default function AddSpotDetailsPage() {
@@ -25,7 +28,7 @@ export default function AddSpotDetailsPage() {
   if (!state?.position) {
     return <Navigate to="/spots/new" replace />;
   }
-  const { position, address } = state;
+  const { position, address, photos, reviews } = state;
   const center = { lat: position[0], lng: position[1] };
 
   function handleSubmit(e: React.FormEvent) {
@@ -41,6 +44,9 @@ export default function AddSpotDetailsPage() {
       rating,
       lat: position[0],
       lng: position[1],
+      address: address || undefined,
+      photos: photos && photos.length > 0 ? photos : undefined,
+      reviews: reviews && reviews.length > 0 ? reviews : undefined,
     });
     navigate("/spots");
   }
@@ -81,6 +87,44 @@ export default function AddSpotDetailsPage() {
           {address && <p className="truncate text-xs text-husk/40">{address}</p>}
         </div>
       </div>
+
+      {photos && photos.length > 0 && (
+        <div className="mb-5 -mt-2 flex gap-2 overflow-x-auto pb-1">
+          {photos.map((url, i) => (
+            <img
+              key={url}
+              src={url}
+              alt={`${name || "Place"} photo ${i + 1}`}
+              loading="lazy"
+              className="h-20 w-28 shrink-0 rounded-lg object-cover"
+            />
+          ))}
+        </div>
+      )}
+
+      {reviews && reviews.length > 0 && (
+        <details className="mb-5 -mt-2 rounded-xl border border-husk/10 bg-bark p-3">
+          <summary className="cursor-pointer text-xs font-medium text-husk/60">
+            {reviews.length} Google review{reviews.length > 1 ? "s" : ""} saved with this spot
+          </summary>
+          <div className="mt-3 flex flex-col gap-3">
+            {reviews.map((review, i) => (
+              <div key={i} className="text-xs">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-roast-light" aria-label={`${review.rating} out of 5 stars`}>
+                    {"★".repeat(review.rating)}
+                    <span className="text-husk/20">{"★".repeat(5 - review.rating)}</span>
+                  </span>
+                  <span className="text-husk/40">
+                    {review.authorName} · {review.relativeTime}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-husk/60">{review.text}</p>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>

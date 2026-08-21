@@ -175,6 +175,14 @@ export const notableBeanSchema = z.object({
   caveat: z.string().optional(),
 });
 
+export const placeReviewSchema = z.object({
+  authorName: z.string().min(1),
+  authorPhotoUrl: z.string().optional(),
+  rating: z.number().int().min(1).max(5),
+  text: z.string().min(1),
+  relativeTime: z.string().min(1),
+});
+
 export const coffeeSpotSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
@@ -184,6 +192,8 @@ export const coffeeSpotSchema = z.object({
   lat: z.number().min(-90).max(90),
   lng: z.number().min(-180).max(180),
   address: z.string().optional(),
+  photos: z.array(z.string()).optional(),
+  reviews: z.array(placeReviewSchema).optional(),
   createdAt: z.string().min(1),
 });
 
