@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { MapContainer, Marker, Popup } from "react-leaflet";
+import { Map, AdvancedMarker, InfoWindow, useMap } from "@vis.gl/react-google-maps";
 import { getAllSpots, deleteSpot } from "@/lib/spotsStore";
-import { fixLeafletIcons } from "@/lib/leafletIcons";
-import OpenFreeMapLayer from "@/components/OpenFreeMapLayer";
 import { CoffeeSpot } from "@/types";
 
-fixLeafletIcons();
-
-const DEFAULT_CENTER: [number, number] = [40.7128, -74.006]; // fallback: NYC
+const DEFAULT_CENTER = { lat: 40.7128, lng: -74.006 }; // fallback: NYC
 
 function StarRow({ rating }: { rating: number }) {
   return (
@@ -19,8 +15,21 @@ function StarRow({ rating }: { rating: number }) {
   );
 }
 
+/** Zooms out to fit every spot on screen once there's more than one. */
+function FitToSpots({ spots }: { spots: CoffeeSpot[] }) {
+  const map = useMap();
+  useEffect(() => {
+    if (!map || spots.length < 2) return;
+    const bounds = new google.maps.LatLngBounds();
+    spots.forEach((s) => bounds.extend({ lat: s.lat, lng: s.lng }));
+    map.fitBounds(bounds, 48);
+  }, [map, spots]);
+  return null;
+}
+
 export default function SpotsPage() {
   const [spots, setSpots] = useState<CoffeeSpot[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
     setSpots(getAllSpots());
@@ -31,8 +40,8 @@ export default function SpotsPage() {
     setSpots(getAllSpots());
   }
 
-  const center: [number, number] =
-    spots.length > 0 ? [spots[0].lat, spots[0].lng] : DEFAULT_CENTER;
+  const center = spots.length > 0 ? { lat: spots[0].lat, lng: spots[0].lng } : DEFAULT_CENTER;
+  const selected = spots.find((s) => s.id === selectedId) ?? null;
 
   return (
     <main className="mx-auto min-h-screen max-w-md px-4 pb-40 pt-8">
@@ -49,22 +58,36 @@ export default function SpotsPage() {
       </header>
 
       <div className="h-64 w-full overflow-hidden rounded border border-husk/10">
-        <MapContainer
+        <Map
           center={center}
-          zoom={spots.length > 0 ? 12 : 3}
-          scrollWheelZoom={false}
+          zoom={spots.length > 0 ? 13 : 3}
+          mapId="DEMO_MAP_ID"
+          gestureHandling="greedy"
+          disableDefaultUI={false}
+          streetViewControl={false}
+          mapTypeControl={false}
           className="h-full w-full"
         >
-          <OpenFreeMapLayer />
+          <FitToSpots spots={spots} />
           {spots.map((spot) => (
-            <Marker key={spot.id} position={[spot.lat, spot.lng]}>
-              <Popup>
-                <strong>{spot.name}</strong>
-                {spot.drinkOrdered && <div>{spot.drinkOrdered}</div>}
-              </Popup>
-            </Marker>
+            <AdvancedMarker
+              key={spot.id}
+              position={{ lat: spot.lat, lng: spot.lng }}
+              onClick={() => setSelectedId(spot.id)}
+            />
           ))}
-        </MapContainer>
+          {selected && (
+            <InfoWindow
+              position={{ lat: selected.lat, lng: selected.lng }}
+              onCloseClick={() => setSelectedId(null)}
+            >
+              <div className="text-char">
+                <strong>{selected.name}</strong>
+                {selected.drinkOrdered && <div>{selected.drinkOrdered}</div>}
+              </div>
+            </InfoWindow>
+          )}
+        </Map>
       </div>
 
       <div className="mt-5 flex flex-col gap-3">

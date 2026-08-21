@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { APIProvider } from "@vis.gl/react-google-maps";
 import HomePage from "@/pages/HomePage";
 import BrewPage from "@/pages/BrewPage";
 import RecipeDetailPage from "@/pages/RecipeDetailPage";
@@ -64,9 +65,11 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   return (
-    <BrowserRouter>
-      {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
-      <AppRoutes />
-    </BrowserRouter>
+    <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} libraries={["places", "marker"]}>
+      <BrowserRouter>
+        {showSplash && <SplashScreen onDone={() => setShowSplash(false)} />}
+        <AppRoutes />
+      </BrowserRouter>
+    </APIProvider>
   );
 }

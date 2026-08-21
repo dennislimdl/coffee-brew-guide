@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { MapContainer } from "react-leaflet";
-import { fixLeafletIcons } from "@/lib/leafletIcons";
-import OpenFreeMapLayer from "@/components/OpenFreeMapLayer";
-import LocationPicker from "@/components/LocationPicker";
-import { formatDistanceKm } from "@/lib/geo";
+import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import {
-  DEFAULT_MAP_CENTER,
-  GeocodeResult,
-  geocode,
+  PlaceSuggestion,
+  PlaceDetails,
+  searchPlaces,
+  getPlaceDetails,
   reverseGeocode,
-} from "@/lib/geocoding";
+} from "@/lib/googlePlaces";
 import { useDebouncedValue } from "@/lib/useDebouncedValue";
+
+const DEFAULT_CENTER = { lat: 40.7128, lng: -74.006 }; // fallback: NYC
 
 export default function AddSpotPage() {
   const navigate = useNavigate();
@@ -19,17 +18,18 @@ export default function AddSpotPage() {
   const [position, setPosition] = useState<[number, number] | null>(null);
   const [name, setName] = useState<string | null>(null);
   const [address, setAddress] = useState<string | null>(null);
-  const [namingLoading, setNamingLoading] = useState(false);
+  const [photos, setPhotos] = useState<string[]>([]);
+  const [placeLoading, setPlaceLoading] = useState(false);
   const [locating, setLocating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const debouncedQuery = useDebouncedValue(searchQuery, 400);
-  const [searchResults, setSearchResults] = useState<GeocodeResult[]>([]);
+  const debouncedQuery = useDebouncedValue(searchQuery, 350);
+  const [searchResults, setSearchResults] = useState<PlaceSuggestion[]>([]);
   const [searching, setSearching] = useState(false);
   const [resultsOpen, setResultsOpen] = useState(false);
 
-  // Best-effort device location, used only to bias/sort search results by
+  // Best-effort device location, used only to bias search results by
   // proximity — silently ignored if unavailable or denied.
   const [deviceLocation, setDeviceLocation] = useState<[number, number] | null>(null);
   useEffect(() => {
@@ -50,48 +50,67 @@ export default function AddSpotPage() {
       setSearching(false);
       return;
     }
-    const controller = new AbortController();
+    let cancelled = false;
     setSearching(true);
-    geocode(trimmed, controller.signal, searchBias)
+    searchPlaces(trimmed, searchBias)
       .then((results) => {
-        setSearchResults(results);
-        setSearching(false);
+        if (!cancelled) {
+          setSearchResults(results);
+          setSearching(false);
+        }
       })
-      .catch((err) => {
-        if ((err as Error).name !== "AbortError") setSearching(false);
+      .catch(() => {
+        if (!cancelled) {
+          setSearching(false);
+          setError("Search failed — check that Places API (New) is enabled.");
+        }
       });
-    return () => controller.abort();
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- re-searching on every pixel of pin movement would be excessive; bias only needs to be "close enough"
   }, [debouncedQuery]);
 
-  function placePin(pos: [number, number], knownLabel?: string, knownAddress?: string) {
-    setPosition(pos);
+  function applyPlace(details: PlaceDetails) {
+    setPosition([details.lat, details.lng]);
+    setName(details.name);
+    setAddress(details.address);
+    setPhotos(details.photoUrls);
     setError(null);
-
-    if (knownLabel) {
-      setName(knownLabel);
-      setAddress(knownAddress ?? null);
-      return;
-    }
-    setName(null);
-    setAddress(null);
-    const controller = new AbortController();
-    setNamingLoading(true);
-    reverseGeocode(pos, controller.signal)
-      .then((result) => {
-        if (result) {
-          setName(result.label);
-          setAddress(result.address);
-        }
-      })
-      .finally(() => setNamingLoading(false));
   }
 
-  function selectSearchResult(result: GeocodeResult) {
-    placePin([result.lat, result.lng], result.primaryLabel, result.displayName);
+  async function selectSearchResult(suggestion: PlaceSuggestion) {
     setSearchQuery("");
     setSearchResults([]);
     setResultsOpen(false);
+    setPlaceLoading(true);
+    try {
+      const details = await getPlaceDetails(suggestion.placeId);
+      if (details) applyPlace(details);
+      else setError("Couldn't load that place — try another result.");
+    } catch {
+      setError("Couldn't load that place — try another result.");
+    } finally {
+      setPlaceLoading(false);
+    }
+  }
+
+  async function placePinManually(pos: [number, number]) {
+    setPosition(pos);
+    setName(null);
+    setAddress(null);
+    setPhotos([]);
+    setError(null);
+    setPlaceLoading(true);
+    try {
+      const result = await reverseGeocode(pos);
+      if (result) {
+        setName(result.label);
+        setAddress(result.address);
+      }
+    } finally {
+      setPlaceLoading(false);
+    }
   }
 
   function useMyLocation() {
@@ -103,7 +122,7 @@ export default function AddSpotPage() {
     setError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        placePin([pos.coords.latitude, pos.coords.longitude]);
+        placePinManually([pos.coords.latitude, pos.coords.longitude]);
         setLocating(false);
       },
       () => {
@@ -117,13 +136,14 @@ export default function AddSpotPage() {
     setPosition(null);
     setName(null);
     setAddress(null);
+    setPhotos([]);
     setError(null);
   }
 
   function confirmPlace() {
     if (!position) return;
     navigate("/spots/new/details", {
-      state: { position, name: name ?? "", address: address ?? "" },
+      state: { position, name: name ?? "", address: address ?? "", photos },
     });
   }
 
@@ -164,23 +184,20 @@ export default function AddSpotPage() {
 
         {resultsOpen && searchResults.length > 0 && (
           <ul className="absolute inset-x-0 top-full z-[1000] mt-1 max-h-56 overflow-y-auto rounded border border-husk/15 bg-bark shadow-lg shadow-black/30">
-            {searchResults.map((result, i) => (
-              <li key={`${result.lat}-${result.lng}-${i}`}>
+            {searchResults.map((result) => (
+              <li key={result.placeId}>
                 <button
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => selectSearchResult(result)}
                   className="block w-full px-3 py-2 text-left text-sm text-husk/80 hover:bg-char"
                 >
-                  <span className="flex items-baseline justify-between gap-2">
-                    <span className="truncate font-medium text-husk">{result.primaryLabel}</span>
-                    {result.distanceKm !== undefined && (
-                      <span className="shrink-0 font-mono text-[11px] text-roast-light">
-                        {formatDistanceKm(result.distanceKm)}
-                      </span>
-                    )}
+                  <span className="block truncate font-medium text-husk">
+                    {result.primaryLabel}
                   </span>
-                  <span className="block truncate text-xs text-husk/40">{result.displayName}</span>
+                  <span className="block truncate text-xs text-husk/40">
+                    {result.secondaryLabel}
+                  </span>
                 </button>
               </li>
             ))}
@@ -199,18 +216,25 @@ export default function AddSpotPage() {
 
       <div
         className={`mt-4 w-full overflow-hidden rounded-xl border transition-all duration-300 ${
-          position ? "h-72 border-roast-light/40" : "h-56 border-husk/10"
+          position ? "h-64 border-roast-light/40" : "h-56 border-husk/10"
         }`}
       >
-        <MapContainer
-          center={position ?? DEFAULT_MAP_CENTER}
+        <Map
+          center={position ? { lat: position[0], lng: position[1] } : DEFAULT_CENTER}
           zoom={position ? 17 : 3}
-          scrollWheelZoom={false}
-          className="h-full w-full"
+          mapId="DEMO_MAP_ID"
+          gestureHandling="greedy"
+          disableDefaultUI={false}
+          streetViewControl={false}
+          mapTypeControl={false}
+          onClick={(e) => {
+            if (e.detail.latLng) {
+              placePinManually([e.detail.latLng.lat, e.detail.latLng.lng]);
+            }
+          }}
         >
-          <OpenFreeMapLayer recenterTo={position} />
-          <LocationPicker position={position} onPick={(pos) => placePin(pos)} />
-        </MapContainer>
+          {position && <AdvancedMarker position={{ lat: position[0], lng: position[1] }} />}
+        </Map>
       </div>
 
       {!position ? (
@@ -233,9 +257,24 @@ export default function AddSpotPage() {
             Is this the right place?
           </p>
           <p className="mt-1 font-display text-lg font-semibold text-husk">
-            {namingLoading ? "Looking up name…" : name || "Unnamed location"}
+            {placeLoading ? "Looking up name…" : name || "Unnamed location"}
           </p>
           {address && <p className="mt-0.5 text-xs text-husk/50">{address}</p>}
+
+          {photos.length > 0 && (
+            <div className="mt-3 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+              {photos.map((url, i) => (
+                <img
+                  key={url}
+                  src={url}
+                  alt={`${name ?? "Place"} photo ${i + 1}`}
+                  loading="lazy"
+                  className="h-24 w-32 shrink-0 rounded-lg object-cover"
+                />
+              ))}
+            </div>
+          )}
+
           <p className="mt-2 text-xs text-husk/40">
             Tap the map above to nudge the pin if it's off.
           </p>

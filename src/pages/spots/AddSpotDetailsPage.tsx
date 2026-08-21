@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation, Navigate, Link } from "react-router-dom";
-import { MapContainer, Marker } from "react-leaflet";
+import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
 import { addSpot } from "@/lib/spotsStore";
-import { fixLeafletIcons } from "@/lib/leafletIcons";
-import OpenFreeMapLayer from "@/components/OpenFreeMapLayer";
-
-fixLeafletIcons();
 
 interface LocationState {
   position: [number, number];
@@ -30,6 +26,7 @@ export default function AddSpotDetailsPage() {
     return <Navigate to="/spots/new" replace />;
   }
   const { position, address } = state;
+  const center = { lat: position[0], lng: position[1] };
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -65,22 +62,17 @@ export default function AddSpotDetailsPage() {
 
       <div className="mb-5 flex items-center gap-3 rounded-xl border border-husk/10 bg-bark p-3">
         <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
-          <MapContainer
-            center={position}
+          <Map
+            center={center}
             zoom={16}
-            dragging={false}
-            touchZoom={false}
-            doubleClickZoom={false}
-            scrollWheelZoom={false}
-            boxZoom={false}
-            keyboard={false}
+            mapId="DEMO_MAP_ID"
+            gestureHandling="none"
+            disableDefaultUI
             zoomControl={false}
-            attributionControl={false}
             className="h-full w-full"
           >
-            <OpenFreeMapLayer />
-            <Marker position={position} />
-          </MapContainer>
+            <AdvancedMarker position={center} />
+          </Map>
         </div>
         <div className="min-w-0">
           <p className="truncate font-display text-base font-semibold text-husk">
